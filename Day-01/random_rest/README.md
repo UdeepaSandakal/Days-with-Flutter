@@ -1,16 +1,14 @@
-# random_rest
+# 30-days-of-Flutter
 
-A new Flutter project.
+#Day : 01
 
-## Getting Started
+#Project Name : random_rest
 
-This project is a starting point for a Flutter application.
+#About : This is a simple Flutter app which shows random names of restaurant each time user clicks the button.
 
-A few resources to get you started if this is your first Flutter project:
+#Learnt things : Scaffold,Column,Material button,Alignments.
+                 How to define a function and call it.
+                 
+© Udeepa Sandakal - © keeSoft
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![random_rest](https://user-images.githubusercontent.com/81462130/234490972-aa9f03a6-d0d2-48a2-abed-33476cef3769.gif)
