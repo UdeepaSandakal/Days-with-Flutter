@@ -45,6 +45,7 @@ class _MyAppState extends State<MyApp> {
               Padding(
                 padding: EdgeInsets.all(20.0),
                 child: ToggleButtons(
+                    color: Colors.red,
                     children: [Text('10%'), Text('15%'), Text('20%')],
                     isSelected: selection,
                     onPressed: updateSelection),
