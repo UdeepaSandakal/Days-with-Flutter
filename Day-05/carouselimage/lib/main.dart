@@ -13,6 +13,14 @@ class CaroselImage extends StatefulWidget {
 }
 
 class _CaroselImageState extends State<CaroselImage> {
+  final _imagepaths = [
+    'images/img_01.png',
+    'images/img_02.jpg',
+    'images/img_03.png',
+    'images/img_04.jpg',
+    'images/img_05.png'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +30,10 @@ class _CaroselImageState extends State<CaroselImage> {
             title: Text('Carousel Slider'),
           ),
           body: CarouselSlider(
-              options: CarouselOptions(autoPlay: true), items: null),
+              options: CarouselOptions(autoPlay: true),
+              items: _imagepaths.map((imagePath) {
+                return Image.asset(imagePath);
+              }).toList()),
         ),
       ),
     );
