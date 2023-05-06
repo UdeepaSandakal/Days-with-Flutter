@@ -16,7 +16,7 @@ class _CaroselImageState extends State<CaroselImage> {
   final _imagepaths = [
     'images/img_01.png',
     'images/img_02.png',
-    'images/img_03.jpg',
+    'images/img_03.png',
   ];
 
   @override
@@ -24,6 +24,7 @@ class _CaroselImageState extends State<CaroselImage> {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
+          backgroundColor: Colors.lightBlueAccent,
           appBar: AppBar(
             title: Text('Carousel Slider'),
           ),
