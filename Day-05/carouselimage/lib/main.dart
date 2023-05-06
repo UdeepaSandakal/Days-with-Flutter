@@ -16,9 +16,7 @@ class _CaroselImageState extends State<CaroselImage> {
   final _imagepaths = [
     'images/img_01.png',
     'images/img_02.png',
-    'images/img_03.png',
-    'images/img_04.jpg',
-    'images/img_05.png'
+    'images/img_03.jpg',
   ];
 
   @override
@@ -29,18 +27,20 @@ class _CaroselImageState extends State<CaroselImage> {
           appBar: AppBar(
             title: Text('Carousel Slider'),
           ),
-          body: CarouselSlider(
-              options: CarouselOptions(autoPlay: true),
-              items: _imagepaths.map((imagePath) {
-                return Builder(builder: (context) {
-                  return Container(
-                      //size of the images are different make it fit
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      margin: EdgeInsets.symmetric(horizontal: 4.0),
-                      child: Image.asset(imagePath));
-                });
-              }).toList()),
+          body: Center(
+            child: CarouselSlider(
+                options: CarouselOptions(autoPlay: true),
+                items: _imagepaths.map((imagePath) {
+                  return Builder(builder: (context) {
+                    return Container(
+                        //size of the images are different make it fit
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        margin: EdgeInsets.symmetric(horizontal: 4.0),
+                        child: Image.asset(imagePath));
+                  });
+                }).toList()),
+          ),
         ),
       ),
     );
