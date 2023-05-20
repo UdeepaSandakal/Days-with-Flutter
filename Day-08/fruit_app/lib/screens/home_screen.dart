@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_app/utils/colors.dart';
+import 'package:fruit_app/utils/utilis.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,8 +16,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Row(
                 children: [
@@ -49,7 +52,112 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const Spacer(),
                   // icon widget
+                  iconWidget(FontAwesomeIcons.bagShopping, true),
                 ],
+              ),
+              const SizedBox(height: 30),
+
+              //tagline
+              RichText(
+                text: const TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Get four fresh items \n',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.black87,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'with',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.black87,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    TextSpan(
+                      text: ' Hey Markets',
+                      style: TextStyle(
+                        fontSize: 35,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+
+              //search bar
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        height: 70,
+                        width: MediaQuery.of(context).size.width * 0.55,
+                        padding: const EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: boxShadow,
+                            borderRadius: BorderRadius.circular(30.0)),
+                        child: Row(
+                          children: const [
+                            Icon(
+                              FontAwesomeIcons.magnifyingGlass,
+                              size: 25,
+                              color: kPrimaryColor,
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              'Search Apple',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black38,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        padding: const EdgeInsets.all(10.0),
+                        decoration: const BoxDecoration(
+                          color: kPrimaryColor,
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          FontAwesomeIcons.filter,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+
+              SizedBox(
+                height: 80,
+                width: MediaQuery.of(context).size.width,
+                child: ListView.builder(
+                  itemCount: data.length,
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  padding: EdgeInsets.only(top: 20.0),
+                  itemBuilder: (context, index) {
+                    return Padding(padding: padding)
+                  },
+                ),
               ),
             ],
           ),
