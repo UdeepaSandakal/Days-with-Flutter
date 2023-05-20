@@ -4,6 +4,7 @@ import 'package:fruit_app/utils/colors.dart';
 import 'package:fruit_app/utils/utilis.dart';
 
 import '../data/data.dart';
+import '../widgets/product_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
