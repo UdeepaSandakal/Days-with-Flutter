@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_app/data/data.dart';
+import 'package:fruit_app/utils/colors.dart';
 import 'package:fruit_app/utils/utilis.dart';
 
 class DetailsScreen extends StatefulWidget {
@@ -85,7 +86,33 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             priceWidget(widget.product.price),
                           ],
                         ),
-                        Container()
+
+                        //icons
+                        Container(
+                          width: 130,
+                          padding: const EdgeInsets.all(5.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30.0),
+                            boxShadow: boxShadow,
+                          ),
+                          child: Row(
+                            children: [
+                              //decrese quantity icon
+                              quantityIcon(
+                                onTap: () {},
+                                color: kSecondaryColor,
+                                icon: FontAwesomeIcons.minus,
+                              ),
+                              //increse quantity icon
+                              quantityIcon(
+                                onTap: () {},
+                                color: kPrimaryColor,
+                                icon: FontAwesomeIcons.plus,
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -94,6 +121,29 @@ class _DetailsScreenState extends State<DetailsScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget quantityIcon({
+    required VoidCallback onTap,
+    required Color color,
+    required IconData icon,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: color,
+        ),
+        child: Icon(
+          icon,
+          color: color == kPrimaryColor ? Colors.white : kPrimaryColor,
+          size: 20,
+        ),
       ),
     );
   }
