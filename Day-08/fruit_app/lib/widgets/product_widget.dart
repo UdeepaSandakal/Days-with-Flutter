@@ -68,6 +68,20 @@ class ProductWidget extends StatelessWidget {
                   ),
                 ],
               ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  priceWidget(product.price),
+                ],
+              ),
             ),
           ),
         ],

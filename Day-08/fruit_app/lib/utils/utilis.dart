@@ -40,3 +40,26 @@ Widget iconWidget(IconData icon, bool dotExists) {
     ),
   );
 }
+
+Widget priceWidget(String price) {
+  return RichText(
+    text: TextSpan(
+      children: [
+        TextSpan(
+          text: '\$$price',
+          style: const TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const TextSpan(
+          text: '/kg',
+          style: TextStyle(
+            color: Colors.black38,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    ),
+  );
+}
