@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fruit_app/screens/details_screen.dart';
 import 'package:fruit_app/utils/colors.dart';
 import 'package:fruit_app/utils/utilis.dart';
 
@@ -187,8 +188,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: data[0].products!.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
-                    onTap: () {},
-                    child: ProductWidget(product: data[0].products![index]),
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailsScreen(
+                          product: data[0].products![index],
+                        ),
+                      ),
+                    ),
+                    child: ProductWidget(
+                      product: data[0].products![index],
+                    ),
                   );
                 },
               ),

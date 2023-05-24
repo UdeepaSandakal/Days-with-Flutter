@@ -80,6 +80,18 @@ class ProductWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   priceWidget(product.price),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: const [
+                      Text('See more'),
+                      SizedBox(width: 10),
+                      Icon(
+                        FontAwesomeIcons.arrowTrendUp,
+                        color: kPrimaryColor,
+                        size: 16,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),

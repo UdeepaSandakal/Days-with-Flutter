@@ -53,7 +53,7 @@ Widget priceWidget(String price) {
           ),
         ),
         const TextSpan(
-          text: '/kg',
+          text: ' / kg',
           style: TextStyle(
             color: Colors.black38,
             fontWeight: FontWeight.bold,

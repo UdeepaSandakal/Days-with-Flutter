@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: true,
+      //for device preview
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       title: "FruitShop",

@@ -1,10 +1,10 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:fruit_app/data/data.dart';
 
 class DetailsScreen extends StatefulWidget {
-  const DetailsScreen({super.key, required Product product});
+  final Product product;
+  const DetailsScreen({super.key, required this.product});
 
   @override
   State<DetailsScreen> createState() => _DetailsScreenState();
@@ -13,8 +13,23 @@ class DetailsScreen extends StatefulWidget {
 class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: ,
+      body: Stack(
+        children: [
+          //product image
+          Container(
+            height: size.height * 0.50,
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.all(20.0),
+            color: widget.product.color,
+            child: Transform.rotate(
+              angle: 2.10 * pi,
+              child: Image.asset(widget.product.image),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
