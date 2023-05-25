@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_app/data/data.dart';
 import 'package:fruit_app/utils/colors.dart';
 import 'package:fruit_app/utils/utilis.dart';
+import 'package:slide_to_act/slide_to_act.dart';
 
 import '../widgets/nutrient_widget.dart';
 
@@ -25,40 +26,46 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          //product image
           Container(
-            height: size.height * 0.55,
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.all(20.0),
-            color: widget.product.color,
-            child: Transform.rotate(
-              angle: 2.10 * pi,
-              child: Image.asset(widget.product.image),
-            ),
-          ),
-
-          //top buttons
-          Positioned(
-            top: 50,
-            right: 20,
-            left: 20,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
               children: [
-                InkWell(
-                  onTap: () => Navigator.of(context).pop(),
-                  child: iconWidget(FontAwesomeIcons.arrowLeft, false),
-                ),
-                const Text(
-                  'Details',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                //top buttons
+                SizedBox(
+                  height: 80,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                        onTap: () => Navigator.of(context).pop(),
+                        child: iconWidget(FontAwesomeIcons.arrowLeft, false),
+                      ),
+                      const Text(
+                        'Details',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () => Navigator.of(context).pop(),
+                        child: iconWidget(FontAwesomeIcons.bagShopping, true),
+                      ),
+                    ],
                   ),
                 ),
-                InkWell(
-                  onTap: () => Navigator.of(context).pop(),
-                  child: iconWidget(FontAwesomeIcons.bagShopping, true),
+                //product image
+                Container(
+                  height: size.height * 0.60,
+                  width: MediaQuery.of(context).size.width,
+                  padding: const EdgeInsets.all(20.0),
+                  color: widget.product.color,
+                  child: Transform.rotate(
+                    angle: 2.10 * pi,
+                    child: Image.asset(
+                      widget.product.image,
+                      alignment: Alignment.bottomCenter,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -67,11 +74,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
           //product details
           Container(
             width: size.width,
-            margin: EdgeInsets.only(top: size.height * 0.55),
+            margin: EdgeInsets.only(top: size.height * 0.60),
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(20.0),
               child: SizedBox(
-                height: size.height * 0.55,
+                height: size.height * 0.80,
                 child: Column(
                   children: [
                     Row(
@@ -79,13 +86,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       children: [
                         //product name
                         Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               widget.product.name,
                               style: const TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 35,
+                                fontSize: 30,
                               ),
                             ),
                             const SizedBox(height: 10),
@@ -149,6 +157,28 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           index: index,
                         );
                       },
+                    ),
+
+                    //product description
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: SlideAction(
+                          outerColor: kPrimaryColor,
+                          sliderButtonIcon: const Icon(
+                            FontAwesomeIcons.arrowRight,
+                            size: 20,
+                            color: kPrimaryColor,
+                          ),
+                          text: "ADD TO CART",
+                          textStyle: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                          ),
+                          onSubmit: () {},
+                        ),
+                      ),
                     ),
                   ],
                 ),
