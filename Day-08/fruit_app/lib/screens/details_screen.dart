@@ -26,46 +26,43 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return Scaffold(
       body: Stack(
         children: [
+          //product image
           Container(
-            child: Column(
+            height: size.height * 0.60,
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.all(20.0),
+            color: widget.product.color,
+            child: Transform.rotate(
+              angle: 2.20 * pi,
+              child: Image.asset(
+                widget.product.image,
+                alignment: Alignment.bottomCenter,
+              ),
+            ),
+          ),
+
+          //top buttons
+          Positioned(
+            top: 50,
+            right: 20,
+            left: 20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                //top buttons
-                SizedBox(
-                  height: 80,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      InkWell(
-                        onTap: () => Navigator.of(context).pop(),
-                        child: iconWidget(FontAwesomeIcons.arrowLeft, false),
-                      ),
-                      const Text(
-                        'Details',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () => Navigator.of(context).pop(),
-                        child: iconWidget(FontAwesomeIcons.bagShopping, true),
-                      ),
-                    ],
+                InkWell(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: iconWidget(FontAwesomeIcons.arrowLeft, false),
+                ),
+                const Text(
+                  'Details',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                //product image
-                Container(
-                  height: size.height * 0.60,
-                  width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.all(20.0),
-                  color: widget.product.color,
-                  child: Transform.rotate(
-                    angle: 2.10 * pi,
-                    child: Image.asset(
-                      widget.product.image,
-                      alignment: Alignment.bottomCenter,
-                    ),
-                  ),
+                InkWell(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: iconWidget(FontAwesomeIcons.bagShopping, true),
                 ),
               ],
             ),

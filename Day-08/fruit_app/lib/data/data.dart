@@ -39,7 +39,7 @@ final data = [
         nutrientsColor: Colors.red,
         image: "assets/fruits/apple.png",
         isSelected: true,
-        color: Colors.red.shade50,
+        color: Colors.red.shade100,
         nutrients: [
           ['Energy', '3'],
           ['Freshness', '2'],
@@ -53,7 +53,7 @@ final data = [
         image: "assets/fruits/lemon.png",
         isSelected: false,
         nutrientsColor: Colors.green,
-        color: Colors.yellow.shade50,
+        color: Colors.yellow.shade100,
         nutrients: [
           ['Energy', '2'],
           ['Freshness', '3'],
@@ -67,7 +67,7 @@ final data = [
         image: "assets/fruits/avocado.png",
         isSelected: false,
         nutrientsColor: Colors.orange,
-        color: Colors.lightGreen.shade50,
+        color: Colors.lightGreen.shade100,
         nutrients: [
           ['Energy', '4'],
           ['Freshness', '2'],
@@ -81,7 +81,7 @@ final data = [
         image: "assets/fruits/grapes.png",
         isSelected: true,
         nutrientsColor: Colors.yellow,
-        color: Colors.purple.shade50,
+        color: Colors.purple.shade100,
         nutrients: [
           ['Energy', '2'],
           ['Freshness', '1'],
