@@ -5,6 +5,8 @@ import 'package:fruit_app/data/data.dart';
 import 'package:fruit_app/utils/colors.dart';
 import 'package:fruit_app/utils/utilis.dart';
 
+import '../widgets/nutrient_widget.dart';
+
 class DetailsScreen extends StatefulWidget {
   final Product product;
   const DetailsScreen({super.key, required this.product});
@@ -14,6 +16,9 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
+  //for item counting
+  int itemCount = 1;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -34,7 +39,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
           //top buttons
           Positioned(
-            top: 70,
+            top: 50,
             right: 20,
             left: 20,
             child: Row(
@@ -64,12 +69,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
             width: size.width,
             margin: EdgeInsets.only(top: size.height * 0.55),
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(15.0),
               child: SizedBox(
                 height: size.height * 0.55,
                 child: Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         //product name
                         Column(
@@ -97,6 +103,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             boxShadow: boxShadow,
                           ),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               //decrese quantity icon
                               quantityIcon(
@@ -104,6 +111,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 color: kSecondaryColor,
                                 icon: FontAwesomeIcons.minus,
                               ),
+
+                              //item count
+                              Text(
+                                itemCount.toString(),
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+
                               //increse quantity icon
                               quantityIcon(
                                 onTap: () {},
@@ -114,6 +131,24 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           ),
                         ),
                       ],
+                    ),
+
+                    //Netrients details
+                    GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 1.6,
+                      ),
+                      shrinkWrap: true,
+                      primary: false,
+                      itemCount: 4,
+                      itemBuilder: (context, index) {
+                        return NutrientWidget(
+                          product: data[0].products![index],
+                          index: index,
+                        );
+                      },
                     ),
                   ],
                 ),
