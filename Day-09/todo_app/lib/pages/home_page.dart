@@ -30,8 +30,10 @@ class _HomePageState extends State<HomePage> {
   // save new task
   void saveNewTask() {
     setState(() {
-      toDoList.add([]);
+      toDoList.add([_controller.text, false]);
+      _controller.clear();
     });
+    Navigator.of(context).pop();
   }
 
   // create new task
