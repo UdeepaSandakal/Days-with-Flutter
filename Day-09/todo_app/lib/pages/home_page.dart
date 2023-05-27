@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/data/database.dart';
 import 'package:todo_app/util/todo_tile.dart';
+import 'package:hive_flutter/adapters.dart';
 
 import '../util/dialog_box.dart';
 
@@ -11,26 +13,42 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-// text controller
-  final _controller = TextEditingController();
+  // reference the hive box
+  final _myBox = Hive.box('mybox');
+  ToDoDatabase db = ToDoDatabase();
 
-  // list of tasks
-  List toDoList = [];
+  @override
+  void initState() {
+    // when the first time open, create defult data
+    if (_myBox.get('TODOLIST') == null) {
+      db.createInitialData();
+    }
+    // if already exit data
+    else {
+      db.loadData();
+    }
+    super.initState();
+  }
+
+  // text controller
+  final _controller = TextEditingController();
 
   // checkbox was tapped
   void checkBoxChanged(bool? value, int index) {
     setState(() {
-      toDoList[index][1] = !toDoList[index][1];
+      db.toDoList[index][1] = !db.toDoList[index][1];
     });
+    db.updateDatabase();
   }
 
   // save new task
   void saveNewTask() {
     setState(() {
-      toDoList.add([_controller.text, false]);
+      db.toDoList.add([_controller.text, false]);
       _controller.clear();
     });
     Navigator.of(context).pop();
+    db.updateDatabase();
   }
 
   // create new task
@@ -50,8 +68,9 @@ class _HomePageState extends State<HomePage> {
   // delete task
   void deleteTask(int index) {
     setState(() {
-      toDoList.removeAt(index);
+      db.toDoList.removeAt(index);
     });
+    db.updateDatabase();
   }
 
   @override
@@ -59,7 +78,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.deepOrange[200],
       appBar: AppBar(
-        title: const Text('Todo List'),
+        title: const Text('TO DO'),
         elevation: 0,
       ),
       floatingActionButton: FloatingActionButton(
@@ -67,11 +86,11 @@ class _HomePageState extends State<HomePage> {
         child: const Icon(Icons.add),
       ),
       body: ListView.builder(
-        itemCount: toDoList.length,
+        itemCount: db.toDoList.length,
         itemBuilder: (context, index) {
           return ToDoTile(
-            taskName: toDoList[index][0],
-            taskComplete: toDoList[index][1],
+            taskName: db.toDoList[index][0],
+            taskComplete: db.toDoList[index][1],
             onChanged: (value) => checkBoxChanged(value, index),
             deleteFunction: (context) => deleteTask(index),
           );
