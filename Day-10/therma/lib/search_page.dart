@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var cityController = TextEditingController();
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -21,9 +22,9 @@ class SearchPage extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.only(left: 32, right: 32),
-          child: const Column(
+          child: Column(
             children: <Widget>[
-              Text(
+              const Text(
                 'Search Whether',
                 style: TextStyle(
                   fontSize: 40,
@@ -31,7 +32,7 @@ class SearchPage extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              Text(
+              const Text(
                 'Instanly',
                 style: TextStyle(
                   fontSize: 40,
@@ -39,8 +40,44 @@ class SearchPage extends StatelessWidget {
                   color: Colors.white70,
                 ),
               ),
-              SizedBox(height: 20),
-              TextField()
+              const SizedBox(height: 20),
+              const TextField(
+                // controller: cityController,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.white70,
+                  ),
+                  hintText: 'City Name',
+                  hintStyle: TextStyle(color: Colors.white70),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(
+                      color: Colors.white70,
+                      style: BorderStyle.solid,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      style: BorderStyle.solid,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Container(
+                width: double.infinity,
+                height: 50,
+                child: MaterialButton(
+                  color: Colors.blue,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  onPressed: () {},
+                  child: Text('Search'),
+                ),
+              ),
             ],
           ),
         ),
