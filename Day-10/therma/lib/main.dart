@@ -49,8 +49,8 @@ class _MainAppState extends State<MainApp> {
               ),
               Center(
                 child: Container(
-                  height: 300,
-                  width: 300,
+                  height: 200,
+                  width: 200,
                   child: const FlareActor(
                     "assets/WorldSpin.flr",
                     fit: BoxFit.contain,
@@ -61,15 +61,34 @@ class _MainAppState extends State<MainApp> {
 
               //display outputs
 
-              if (_response != null)
-                Column(
+              if (_response != null && _response!.weatherInfo.iconUrl != null)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
-                      '${_response?.tempInfo.temperature.round()} °C',
-                      style:
-                          TextStyle(fontSize: 40, fontWeight: FontWeight.w500),
+                    Image.network(_response!.weatherInfo.iconUrl),
+                    Column(
+                      children: [
+                        Text(
+                          '${_response?.tempInfo.temperature.round()} °C',
+                          style: const TextStyle(
+                              fontSize: 40, fontWeight: FontWeight.w500),
+                        ),
+                        Text(_response!.weatherInfo.description),
+                      ],
                     ),
-                    Text(_response!.weatherInfo.description),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                            'Max : ${_response?.tempInfo.temperatureMax.round()} °C'),
+                        Text(
+                            'Min : ${_response?.tempInfo.temperatureMin.round()} °C'),
+                        Text(
+                            'humidity : ${_response?.tempInfo.temperatureMin} '),
+                        Text('Wind : ${_response?.windInfo.windspeed}'),
+                      ],
+                    ),
                   ],
                 ),
 
