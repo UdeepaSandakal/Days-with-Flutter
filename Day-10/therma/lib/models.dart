@@ -18,6 +18,19 @@
 }            
  */
 
+class WeatherInfo {
+  final String description;
+  final String icon;
+
+  WeatherInfo({required this.description, required this.icon});
+
+  factory WeatherInfo.fromJson(Map<String, dynamic> json) {
+    final description = json['description'];
+    final icon = json['icon'];
+    return WeatherInfo(description: description, icon: icon);
+  }
+}
+
 class TemperatureInfo {
   final double temperature;
 
@@ -31,11 +44,25 @@ class TemperatureInfo {
 
 class WeatherResponse {
   final String cityName;
+  final TemperatureInfo tempInfo;
+  final WeatherInfo weatherInfo;
 
-  WeatherResponse({required this.cityName});
+  WeatherResponse({
+    required this.cityName,
+    required this.tempInfo,
+    required this.weatherInfo,
+  });
 
   factory WeatherResponse.fromJson(Map<String, dynamic> json) {
     final cityName = json['name'];
-    return WeatherResponse(cityName: cityName);
+
+    final tempInfoJson = json['main'];
+    final tempInfo = TemperatureInfo.fromJson(tempInfoJson);
+
+    final weatherInfoJson = json['weather'][0];
+    final weatherInfo = WeatherInfo.fromJson(weatherInfoJson);
+
+    return WeatherResponse(
+        cityName: cityName, tempInfo: tempInfo, weatherInfo: weatherInfo);
   }
 }
