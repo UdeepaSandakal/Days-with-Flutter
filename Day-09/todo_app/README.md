@@ -1,16 +1,16 @@
-# todo_app
+#30daysofflutter
+Day: 09
 
-A new Flutter project.
+Project Name: todo_app
 
-## Getting Started
+About: Make a ToDo app which has ability to create and delete and save the tasks. 
 
-This project is a starting point for a Flutter application.
+Objectives: How to use slidable package,How to deal with Hive local database.
 
-A few resources to get you started if this is your first Flutter project:
+Code: https://t.ly/73PpB
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+©Udeepa Sandakal - ©keeSoft
+#TODO #todoapp #flutter #flutterdeveloper #fluttercommunity #flutterapp #flutterdevelopment #dart #codingchallenge 
+#30daysofflutter 😎 💻 ⌛
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot_20230527-123621](https://github.com/UdeepaSandakal/30-days-of-Flutter/assets/81462130/b5ef62a4-afe9-4811-874f-85d1187b6550)
