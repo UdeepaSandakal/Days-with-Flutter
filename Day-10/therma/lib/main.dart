@@ -42,7 +42,7 @@ class MainApp extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.w500,
-                        color: Colors.white70),
+                        color: Colors.white),
                   ),
                   const Text(
                     "Instanly",
@@ -100,5 +100,7 @@ class MainApp extends StatelessWidget {
     );
   }
 
-  void _search() {}
+  void _search() {
+    _dataService.getWeather(_cityTextController.text);
+  }
 }
