@@ -49,7 +49,7 @@ class TemperatureInfo {
   final double temperature;
   final double temperatureMin;
   final double temperatureMax;
-  final double humidity;
+  final int humidity;
 
   TemperatureInfo(
       {required this.temperature,

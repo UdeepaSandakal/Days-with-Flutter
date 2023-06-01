@@ -5,10 +5,14 @@ import 'package:therma/data_service.dart';
 import 'models.dart';
 
 void main() {
-  runApp(MainApp());
+  runApp(const MaterialApp(
+    home: MainApp(),
+  ));
 }
 
 class MainApp extends StatefulWidget {
+  const MainApp({super.key});
+
   @override
   State<MainApp> createState() => _MainAppState();
 }
@@ -85,8 +89,8 @@ class _MainAppState extends State<MainApp> {
                         Text(
                             'Min : ${_response?.tempInfo.temperatureMin.round()} °C'),
                         Text(
-                            'humidity : ${_response?.tempInfo.temperatureMin} '),
-                        Text('Wind : ${_response?.windInfo.windspeed}'),
+                            'humidity : ${_response?.tempInfo.temperatureMin.round()} %'),
+                        Text('Wind : ${_response?.windInfo.windspeed} m/s'),
                       ],
                     ),
                   ],
@@ -131,7 +135,7 @@ class _MainAppState extends State<MainApp> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         onPressed: _search,
-                        color: Colors.lightBlue,
+                        color: Colors.lightBlue[200],
                         child: const Text(
                           "Search",
                           style: TextStyle(color: Colors.white70, fontSize: 16),
@@ -148,8 +152,54 @@ class _MainAppState extends State<MainApp> {
     );
   }
 
+  // void _search() async {
+  //   final responsebaala = await _dataService.getWeather(_cityTextController.text);
+  //   setState(() => _response = response);
+  // }
+
   void _search() async {
-    final response = await _dataService.getWeather(_cityTextController.text);
-    setState(() => _response = response);
+    if (_cityTextController.text.isEmpty) {
+      // Display an error message if the city name is empty
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Error'),
+            content: const Text('Please enter a city name.'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+      return;
+    }
+
+    try {
+      final response = await _dataService.getWeather(_cityTextController.text);
+      setState(() {
+        _response = response;
+      });
+    } catch (e) {
+      // Handle the error and display an error message
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Error'),
+            content: const Text('Failed to retrieve weather data.'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 }
