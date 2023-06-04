@@ -71,6 +71,7 @@ class _MainAppState extends State<MainApp> {
                   children: [
                     Image.network(_response!.weatherInfo.iconUrl),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           '${_response?.tempInfo.temperature.round()} °C',
@@ -78,6 +79,8 @@ class _MainAppState extends State<MainApp> {
                               fontSize: 40, fontWeight: FontWeight.w500),
                         ),
                         Text(_response!.weatherInfo.description),
+                        Text(
+                            '${_response?.cityName} / ${_response!.countryInfo.country}'),
                       ],
                     ),
                     Column(
@@ -89,7 +92,7 @@ class _MainAppState extends State<MainApp> {
                         Text(
                             'Min : ${_response?.tempInfo.temperatureMin.round()} °C'),
                         Text(
-                            'humidity : ${_response?.tempInfo.temperatureMin.round()} %'),
+                            'humidity : ${_response?.tempInfo.humidity.round()} %'),
                         Text('Wind : ${_response?.windInfo.windspeed} m/s'),
                       ],
                     ),

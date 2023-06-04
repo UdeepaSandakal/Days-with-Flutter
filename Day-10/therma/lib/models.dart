@@ -17,10 +17,26 @@
    "wind": {
     "speed": 0.62,
   },
+
+   "sys": {
+    "country": "IT",
+  },
   
   "name": "Zocca",
 }            
  */
+
+class CountryInfo {
+  final String country;
+
+  CountryInfo({required this.country});
+
+  factory CountryInfo.fromJson(Map<String, dynamic> json) {
+    final country = json['country'];
+
+    return CountryInfo(country: country);
+  }
+}
 
 class WeatherInfo {
   final String description;
@@ -91,12 +107,14 @@ class WeatherResponse {
   final TemperatureInfo tempInfo;
   final WeatherInfo weatherInfo;
   final WindInfo windInfo;
+  final CountryInfo countryInfo;
 
   WeatherResponse({
     required this.cityName,
     required this.tempInfo,
     required this.weatherInfo,
     required this.windInfo,
+    required this.countryInfo,
   });
 
   factory WeatherResponse.fromJson(Map<String, dynamic> json) {
@@ -111,11 +129,15 @@ class WeatherResponse {
     final windInfoJson = json['wind'];
     final windInfo = WindInfo.fromJson(windInfoJson);
 
+    final countryInfoJson = json['sys'];
+    final countryInfo = CountryInfo.fromJson(countryInfoJson);
+
     return WeatherResponse(
       cityName: cityName,
       tempInfo: tempInfo,
       weatherInfo: weatherInfo,
       windInfo: windInfo,
+      countryInfo: countryInfo,
     );
   }
 }
