@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "699424596579",
+    "project_id": "keeapp-bd4e3",
+    "storage_bucket": "keeapp-bd4e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:699424596579:android:ab703f6f9937973aac4e56",
+        "android_client_info": {
+          "package_name": "com.example.kee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "699424596579-3s1n3al0esd06d4a2p8jc8qsv43qf9ps.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzeyFtXpTXcuN1aOX7y1ZF5af2Qf6-qso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "699424596579-3s1n3al0esd06d4a2p8jc8qsv43qf9ps.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

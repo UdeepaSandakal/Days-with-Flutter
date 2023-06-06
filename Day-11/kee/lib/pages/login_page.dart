@@ -1,31 +1,57 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kee/components/my_textfiled.dart';
 import 'package:kee/components/my_button.dart';
 import 'package:kee/components/squre_tile.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   // text editing controllers
-  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
 
   // signUserIn method
-  void signUserIn() {}
+  void signUserIn() async {
+    // show loading circle
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(color: Colors.black54),
+        );
+      },
+    );
+
+    // try sign in
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailController.text,
+      password: passwordController.text,
+    );
+
+    // pop the loading circle
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[400],
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 50),
+            const SizedBox(height: 40),
             // logo
             const Icon(Icons.lock, size: 100),
 
-            const SizedBox(height: 50),
+            const SizedBox(height: 40),
             // username textfield
             Text(
               'Welcome back you\'ve been missed!',
@@ -37,10 +63,10 @@ class LoginPage extends StatelessWidget {
 
             const SizedBox(height: 25),
 
-            // username textfied
+            // email textfied
             MyTextField(
-              controller: usernameController,
-              hintText: 'Username',
+              controller: emailController,
+              hintText: 'Email',
               obscureText: false,
             ),
 
@@ -101,7 +127,7 @@ class LoginPage extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
 
             // google + faccebook sign in button
             const Row(
@@ -112,8 +138,8 @@ class LoginPage extends StatelessWidget {
 
                 SizedBox(width: 10),
 
-                // facebook image
-                SqureTile(imagePath: 'lib/images/facebook.png'),
+                // microsoft image
+                SqureTile(imagePath: 'lib/images/microsoft.png'),
               ],
             ),
 

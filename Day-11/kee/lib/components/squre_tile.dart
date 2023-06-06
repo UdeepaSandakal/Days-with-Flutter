@@ -10,7 +10,8 @@ class SqureTile extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.white),
+        color: Colors.white,
+        border: Border.all(color: Colors.white24),
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Image.asset(
