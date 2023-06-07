@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kee/components/my_textfiled.dart';
+import 'package:kee/components/my_textfield.dart';
 import 'package:kee/components/my_button.dart';
-import 'package:kee/components/squre_tile.dart';
+import 'package:kee/components/square_tile.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({super.key});
@@ -30,13 +30,59 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     // try sign in
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text,
-      password: passwordController.text,
-    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
 
-    // pop the loading circle
-    Navigator.pop(context);
+      // pop the loading circle
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+
+      if (e.code == 'user-not-found') {
+        wrongEmailMessage();
+      } else if (e.code == 'wrong-password') {
+        wrongPasswordMessage();
+      }
+    }
+  }
+
+  // wrong email message popup
+  void wrongEmailMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AlertDialog(
+          backgroundColor: Colors.deepPurple,
+          title: Center(
+            child: Text(
+              'Incorrect Email',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  // wrong password message popup
+  void wrongPasswordMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AlertDialog(
+          backgroundColor: Colors.deepPurple,
+          title: Center(
+            child: Text(
+              'Incorrect Password',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -134,12 +180,12 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // google image
-                SqureTile(imagePath: 'lib/images/google.png'),
+                SquareTile(imagePath: 'lib/images/google.png'),
 
                 SizedBox(width: 10),
 
                 // microsoft image
-                SqureTile(imagePath: 'lib/images/microsoft.png'),
+                SquareTile(imagePath: 'lib/images/microsoft.png'),
               ],
             ),
 
