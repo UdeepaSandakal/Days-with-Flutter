@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kee/components/my_textfield.dart';
 import 'package:kee/components/my_button.dart';
 import 'package:kee/components/square_tile.dart';
+import 'package:kee/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -159,16 +160,22 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20),
 
               // google + faccebook sign in button
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // google image
-                  SquareTile(imagePath: 'lib/images/google.png'),
+                  SquareTile(
+                    imagePath: 'lib/images/google.png',
+                    onTap: () => AuthService().signInWithGoogle(),
+                  ),
 
                   SizedBox(width: 10),
 
                   // microsoft image
-                  SquareTile(imagePath: 'lib/images/microsoft.png'),
+                  SquareTile(
+                    imagePath: 'lib/images/microsoft.png',
+                    onTap: () {},
+                  ),
                 ],
               ),
 
