@@ -56,7 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: Colors.black,
           title: Center(
             child: Text(
               message,
@@ -79,7 +79,7 @@ class _RegisterPageState extends State<RegisterPage> {
             children: [
               const SizedBox(height: 30),
               // logo
-              const Icon(Icons.lock, size: 50),
+              const Icon(Icons.key_sharp, size: 50),
 
               const SizedBox(height: 30),
               // username textfield
@@ -166,13 +166,13 @@ class _RegisterPageState extends State<RegisterPage> {
                     onTap: () => AuthService().signInWithGoogle(),
                   ),
 
-                  SizedBox(width: 10),
+                  // SizedBox(width: 10),
 
-                  // microsoft image
-                  SquareTile(
-                    imagePath: 'lib/images/microsoft.png',
-                    onTap: () {},
-                  ),
+                  // // microsoft image
+                  // SquareTile(
+                  //   imagePath: 'lib/images/microsoft.png',
+                  //   onTap: () {},
+                  // ),
                 ],
               ),
 
