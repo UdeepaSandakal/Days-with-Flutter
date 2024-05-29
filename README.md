@@ -1,4 +1,4 @@
-# 30-days-of-Flutter
+# days-with-Flutter
 
 i'm starting a Flutter coding challange to learn every day a new thing about Flutter
 and getting familiar with how to use the concepts with real world Application.
